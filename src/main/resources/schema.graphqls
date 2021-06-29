@@ -1,0 +1,42 @@
+type Query{
+    categoriaInvestimentoBySigla(sigla: String): CategoriaInvestimentoEntity
+}
+
+type Mutation{
+    create(sigla: String, decricao: String, subcategoriaInvestimento: SubcategoriaInvestimento, investimentosEntity: TiposInvestimentos): Boolean
+    complete(id: ID): Boolean!
+    delete(id: ID): Boolean!
+}
+
+type CategoriaInvestimentoEntity{
+    id: ID
+    sigla: String
+    descricao: String
+    subcategoriaInvestimento: SubcategoriaInvestimento
+    investimentosEntity: InvestimentosEntity
+}
+
+enum SubcategoriaInvestimento {
+    CERTIFICADO_DEPOSITO_BANCARIO,
+    CERTIFICADO_RECEBIVEIS_AGRONEGOCIO,
+    CERTIFICADO_RECEBIVEIS_IMOBILIARIOS,
+    DEBENTURES,
+    DEPOSITO_PRAZO_COM_GARANTIA,
+    FUNDO_INVESTIMENTO_DIREITOS_CREDITORIOS,
+    LETRA_CAMBIO,
+    LETRA_CREDITO_AGRONEGOCIO,
+    LETRA_CREDITO_IMOBILIARIO,
+    LETRA_FINANCEIRA,
+    TESOURO_DIRETO,
+    TITULOS_PUBLICOS_FEDERAIS
+}
+
+type InvestimentosEntity{
+    id: ID
+    tiposInvestimentos: TiposInvestimentos
+}
+
+enum TiposInvestimentos {
+    RENDAFIXA,
+    RENDAVARIAVEL
+}

@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: demoMicronautGraphql
+
+graphql:
+  enabled: true
+  path: /graphql
+  graphiql:
+    enabled: true
+    version: 0.13.2
+    path: /graphiql
+    template-path: classpath:graphiql/index.html
+    template-parameters:
+    page-title: GraphiQL
