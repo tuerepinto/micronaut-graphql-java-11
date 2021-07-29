@@ -40,5 +40,4 @@ class DemoMicronautGraphqlTest {
         Map categoriaInvestimentoSigla = (Map) categoriaInvestimento.get("categoriaInvestimentoBySigla");
         assertEquals("CDB", categoriaInvestimentoSigla.get("sigla"));
     }
-
 }

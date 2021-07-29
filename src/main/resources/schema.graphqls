@@ -1,9 +1,10 @@
 type Query{
     categoriaInvestimentoBySigla(sigla: String): CategoriaInvestimentoEntity
+    getByTipoInvestimento(tipo: TiposInvestimentos): [CategoriaInvestimentoEntity]
 }
 
 type Mutation{
-    create(sigla: String, decricao: String, subcategoriaInvestimento: SubcategoriaInvestimento, investimentosEntity: TiposInvestimentos): Boolean
+    create(id: ID, sigla: String, decricao: String, subcategoriaInvestimento: SubcategoriaInvestimento, investimentosEntity: TiposInvestimentos): Boolean
     complete(id: ID): Boolean!
     delete(id: ID): Boolean!
 }

@@ -44,6 +44,8 @@ public class GraphQLFactory {
             RuntimeWiring runtimeWiring = RuntimeWiring.newRuntimeWiring()
                     .type(newTypeWiring("Query")
                             .dataFetcher("categoriaInvestimentoBySigla", graphQLDataFetchers.getCategoriaInvestimentoBySigla()))
+                    .type(newTypeWiring("Query")
+                            .dataFetcher("getByTipoInvestimento", graphQLDataFetchers.getCategoriaInvestimentoByTipoInvestimento()))
                     .type(newTypeWiring("CategoriaInvestimentoEntity")
                             .dataFetcher("investimentosEntity", graphQLDataFetchers.getInvestimento()))
                     .type(newTypeWiring("Mutation")

@@ -100,12 +100,12 @@
             <groupId>com.graphql-java-kickstart</groupId>
             <artifactId>graphql-java-tools</artifactId>
             <version>${com.graphql-java-kickstart.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jetbrains.kotlinx</groupId>
-                    <artifactId>kotlinx-coroutines-core-jvm</artifactId>
-                </exclusion>
-            </exclusions>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.jetbrains.kotlinx</groupId>-->
+<!--                    <artifactId>kotlinx-coroutines-core-jvm</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
     </dependencies>
 

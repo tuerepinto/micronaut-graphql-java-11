@@ -2,10 +2,13 @@ package demo.graphql.data;
 
 import demo.graphql.entities.CategoriaInvestimentoEntity;
 import demo.graphql.entities.InvestimentosEntity;
+import demo.graphql.enuns.TiposInvestimentos;
 import demo.graphql.repository.InvestimentoRespository;
 import graphql.schema.DataFetcher;
 
 import javax.inject.Singleton;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 public class GraphQLDataFetchers {
@@ -26,8 +29,18 @@ public class GraphQLDataFetchers {
         };
     }
 
-    public DataFetcher<InvestimentosEntity> getInvestimento(){
-        return  dataFetchingEnvironment -> {
+    public DataFetcher<List<CategoriaInvestimentoEntity>> getCategoriaInvestimentoByTipoInvestimento() {
+        return dataFetchingEnvironment -> {
+            String tipo = dataFetchingEnvironment.getArgument("tipo");
+            TiposInvestimentos tiposInvestimentos = TiposInvestimentos.valueOf(tipo);
+            return investimentoRespository.findAll().stream()
+                    .filter(investimento -> investimento.getInvestimentosEntity().getTiposInvestimentos().equals(tiposInvestimentos))
+                    .collect(Collectors.toList());
+        };
+    }
+
+    public DataFetcher<InvestimentosEntity> getInvestimento() {
+        return dataFetchingEnvironment -> {
             CategoriaInvestimentoEntity categoriaInvestimento = dataFetchingEnvironment.getSource();
             InvestimentosEntity investimento = categoriaInvestimento.getInvestimentosEntity();
             return investimentoRespository.findInvestimentos().stream()
@@ -36,6 +49,4 @@ public class GraphQLDataFetchers {
                     .orElse(null);
         };
     }
-
-
 }

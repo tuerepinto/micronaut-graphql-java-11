@@ -11,7 +11,6 @@ import graphql.schema.DataFetcher;
 import javax.inject.Singleton;
 
 @Singleton
-@SuppressWarnings("Duplicates")
 public class MutationResolver implements GraphQLMutationResolver {
 
     private final InvestimentoRespository investimentoRespository;
@@ -24,16 +23,17 @@ public class MutationResolver implements GraphQLMutationResolver {
         return dataFetchingEnvironment -> {
             CategoriaInvestimentoEntity categoriaInvestimento = dataFetchingEnvironment.getSource();
 
+            String id = dataFetchingEnvironment.getArgument("id");
             String sigla = dataFetchingEnvironment.getArgument("sigla");
-            SubcategoriaInvestimento subcategoriaInvestimento = categoriaInvestimento.getSubcategoriaInvestimento();
+            String subcategoriaInvestimento = dataFetchingEnvironment.getArgument("subcategoriaInvestimento");
             String decricao = dataFetchingEnvironment.getArgument("decricao");
-            TiposInvestimentos tiposInvestimentos = categoriaInvestimento.getInvestimentosEntity().getTiposInvestimentos();
+            String tiposInvestimentos = dataFetchingEnvironment.getArgument("investimentosEntity");
 
-            return investimentoRespository.create(new CategoriaInvestimentoEntity("5",
-                    SubcategoriaInvestimento.valueOf(subcategoriaInvestimento.toString()),
+            return investimentoRespository.create(new CategoriaInvestimentoEntity(id,
+                    SubcategoriaInvestimento.valueOf(subcategoriaInvestimento),
                     sigla,
                     decricao,
-                    new InvestimentosEntity("5", TiposInvestimentos.valueOf(tiposInvestimentos.toString()))
+                    new InvestimentosEntity(id, TiposInvestimentos.valueOf(tiposInvestimentos))
             ));
         };
     }
