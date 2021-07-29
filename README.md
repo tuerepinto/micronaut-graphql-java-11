@@ -7,7 +7,15 @@
 
 ---
 
-## Feature http-client documentation
+## Graphql Documentation
 
-- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+- [User Guide](https://graphql.org)
+- [API Reference Java & Kotlin](https://graphql.org/code/#java-kotlin)
+
+---
+
+## Junit 5 Documentation
+
+- [User Guide](https://junit.org/junit5/docs/current/user-guide/)
+- [API Reference](https://junit.org/junit5/docs/current/api/)
 
