@@ -9,6 +9,7 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetcher;
 
 import javax.inject.Singleton;
+import java.util.List;
 
 @Singleton
 public class MutationResolver implements GraphQLMutationResolver {
@@ -19,7 +20,7 @@ public class MutationResolver implements GraphQLMutationResolver {
         this.investimentoRespository = investimentoRespository;
     }
 
-    public DataFetcher<Boolean> create() {
+    public DataFetcher<List<CategoriaInvestimentoEntity>> create() {
         return dataFetchingEnvironment -> {
             CategoriaInvestimentoEntity categoriaInvestimento = dataFetchingEnvironment.getSource();
 

@@ -1,0 +1,48 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type CategoriaInvestimentoEntity {
+    descricao: String
+    id: ID
+    investimentosEntity: InvestimentosEntity
+    sigla: String
+    subcategoriaInvestimento: SubcategoriaInvestimento
+}
+
+type InvestimentosEntity {
+    id: ID
+    tiposInvestimentos: TiposInvestimentos
+}
+
+type Mutation {
+    create(decricao: String, id: ID, investimentosEntity: TiposInvestimentos, sigla: String, subcategoriaInvestimento: SubcategoriaInvestimento): Boolean
+}
+
+type Query {
+    categoriaInvestimentoBySigla(sigla: String): CategoriaInvestimentoEntity
+    getByTipoInvestimento(tipo: TiposInvestimentos): [CategoriaInvestimentoEntity]
+}
+
+enum SubcategoriaInvestimento {
+    CERTIFICADO_DEPOSITO_BANCARIO
+    CERTIFICADO_RECEBIVEIS_AGRONEGOCIO
+    CERTIFICADO_RECEBIVEIS_IMOBILIARIOS
+    DEBENTURES
+    DEPOSITO_PRAZO_COM_GARANTIA
+    FUNDO_INVESTIMENTO_DIREITOS_CREDITORIOS
+    LETRA_CAMBIO
+    LETRA_CREDITO_AGRONEGOCIO
+    LETRA_CREDITO_IMOBILIARIO
+    LETRA_FINANCEIRA
+    TESOURO_DIRETO
+    TITULOS_PUBLICOS_FEDERAIS
+}
+
+enum TiposInvestimentos {
+    RENDAFIXA
+    RENDAVARIAVEL
+}

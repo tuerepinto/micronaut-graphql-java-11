@@ -49,7 +49,7 @@ public class InvestimentoRespository {
                 .collect(Collectors.toList());
     }
 
-    public boolean create(CategoriaInvestimentoEntity categoriaInvestimentoEntity){
+    public List<CategoriaInvestimentoEntity> create(CategoriaInvestimentoEntity categoriaInvestimentoEntity){
         List<CategoriaInvestimentoEntity> newCategoriaInvestimentoEntities = Arrays.asList(categoriaInvestimentoEntity);
 
         Stream<CategoriaInvestimentoEntity> combinedStream = Stream.of(categoriaInvestimento, newCategoriaInvestimentoEntities)
@@ -60,6 +60,6 @@ public class InvestimentoRespository {
 
         categoriaInvestimento = Lists.newArrayList(collectionCombined);
 
-        return categoriaInvestimento.contains(categoriaInvestimentoEntity);
+        return categoriaInvestimento;
     }
 }

@@ -4,9 +4,12 @@ type Query{
 }
 
 type Mutation{
-    create(id: ID, sigla: String, decricao: String, subcategoriaInvestimento: SubcategoriaInvestimento, investimentosEntity: TiposInvestimentos): Boolean
-    complete(id: ID): Boolean!
-    delete(id: ID): Boolean!
+    create(id: ID,
+        sigla: String,
+        decricao: String,
+        subcategoriaInvestimento: SubcategoriaInvestimento,
+        investimentosEntity: TiposInvestimentos
+    ): [CategoriaInvestimentoEntity]
 }
 
 type CategoriaInvestimentoEntity{
@@ -41,3 +44,5 @@ enum TiposInvestimentos {
     RENDAFIXA,
     RENDAVARIAVEL
 }
+
+
